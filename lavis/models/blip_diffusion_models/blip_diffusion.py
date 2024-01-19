@@ -663,7 +663,13 @@ class BlipDiffusion(BaseModel):
         tokenized_prompt_bef = self._tokenize_text(prompt[:1], with_query=False).to(
             self.device
         )
-        tokenized_prompt_aft = self._tokenize_text(prompt[1:], with_query=True).to(
+
+        prompt_aft = []
+        for p in prompt[1:]:
+            p.replace(" ".join(["sks"] * (self.num_query_token-1)) + " ", "")
+            prompt_aft.append(p)
+
+        tokenized_prompt_aft = self._tokenize_text(prompt_aft, with_query=True).to(
             self.device
         )
 
