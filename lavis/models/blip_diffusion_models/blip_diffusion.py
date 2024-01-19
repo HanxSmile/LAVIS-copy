@@ -66,17 +66,17 @@ class BlipDiffusion(BaseModel):
     }
 
     def __init__(
-        self,
-        vit_model="clip_L",
-        qformer_num_query_token=16,
-        qformer_cross_attention_freq=1,
-        qformer_pretrained_path=None,
-        qformer_train=False,
-        sd_pretrained_model_name_or_path="runwayml/stable-diffusion-v1-5",
-        sd_train_text_encoder=False,
-        controlnet_pretrained_model_name_or_path=None,
-        vae_half_precision=False,
-        proj_train=False,
+            self,
+            vit_model="clip_L",
+            qformer_num_query_token=16,
+            qformer_cross_attention_freq=1,
+            qformer_pretrained_path=None,
+            qformer_train=False,
+            sd_pretrained_model_name_or_path="runwayml/stable-diffusion-v1-5",
+            sd_train_text_encoder=False,
+            controlnet_pretrained_model_name_or_path=None,
+            vae_half_precision=False,
+            proj_train=False,
     ):
         super().__init__()
 
@@ -285,13 +285,13 @@ class BlipDiffusion(BaseModel):
         return [src_prompt, tgt_prompt]
 
     def _predict_noise(
-        self,
-        t,
-        latent_model_input,
-        text_embeddings,
-        width=512,
-        height=512,
-        cond_image=None,
+            self,
+            t,
+            latent_model_input,
+            text_embeddings,
+            width=512,
+            height=512,
+            cond_image=None,
     ):
         if hasattr(self, "controlnet"):
             cond_image = prepare_cond_image(
@@ -375,16 +375,16 @@ class BlipDiffusion(BaseModel):
 
     @torch.no_grad()
     def edit(
-        self,
-        samples,
-        lb_threshold=0.3,
-        guidance_scale=7.5,
-        height=512,
-        width=512,
-        seed=42,
-        num_inference_steps=50,
-        num_inversion_steps=50,
-        neg_prompt="",
+            self,
+            samples,
+            lb_threshold=0.3,
+            guidance_scale=7.5,
+            height=512,
+            width=512,
+            seed=42,
+            num_inference_steps=50,
+            num_inversion_steps=50,
+            neg_prompt="",
     ):
         raw_image = samples["raw_image"]
         raw_image = self._inversion_transform(raw_image)
@@ -418,14 +418,14 @@ class BlipDiffusion(BaseModel):
 
     @torch.no_grad()
     def _ddim_inverse(
-        self,
-        samples,
-        latents,
-        guidance_scale=1.0,
-        height=512,
-        width=512,
-        seed=42,
-        num_inference_steps=50,
+            self,
+            samples,
+            latents,
+            guidance_scale=1.0,
+            height=512,
+            width=512,
+            seed=42,
+            num_inference_steps=50,
     ):
         src_subject = samples["src_subject"]  # source subject category
         prompt = samples["prompt"]
@@ -471,19 +471,19 @@ class BlipDiffusion(BaseModel):
 
     @torch.no_grad()
     def generate(
-        self,
-        samples,
-        latents=None,
-        guidance_scale=7.5,
-        height=512,
-        width=512,
-        seed=42,
-        num_inference_steps=50,
-        neg_prompt="",
-        controller=None,
-        prompt_strength=1.0,
-        prompt_reps=20,
-        use_ddim=False,
+            self,
+            samples,
+            latents=None,
+            guidance_scale=7.5,
+            height=512,
+            width=512,
+            seed=42,
+            num_inference_steps=50,
+            neg_prompt="",
+            controller=None,
+            prompt_strength=1.0,
+            prompt_reps=20,
+            use_ddim=False,
     ):
         if controller is not None:
             self._register_attention_refine(controller)
@@ -557,13 +557,13 @@ class BlipDiffusion(BaseModel):
         return image
 
     def _register_attention_refine(
-        self,
-        src_subject,
-        prompts,
-        num_inference_steps,
-        cross_replace_steps=0.8,
-        self_replace_steps=0.4,
-        threshold=0.3,
+            self,
+            src_subject,
+            prompts,
+            num_inference_steps,
+            cross_replace_steps=0.8,
+            self_replace_steps=0.4,
+            threshold=0.3,
     ):
         device, tokenizer = self.device, self.tokenizer
 
@@ -624,19 +624,19 @@ class BlipDiffusion(BaseModel):
 
     @torch.no_grad()
     def generate_then_edit(
-        self,
-        samples,
-        cross_replace_steps=0.8,
-        self_replace_steps=0.4,
-        guidance_scale=7.5,
-        height=512,
-        width=512,
-        latents=None,
-        seed=42,
-        num_inference_steps=250,
-        neg_prompt="",
-        use_inversion=False,
-        lb_threshold=0.3,
+            self,
+            samples,
+            cross_replace_steps=0.8,
+            self_replace_steps=0.4,
+            guidance_scale=7.5,
+            height=512,
+            width=512,
+            latents=None,
+            seed=42,
+            num_inference_steps=250,
+            neg_prompt="",
+            use_inversion=False,
+            lb_threshold=0.3,
     ):
         cond_image = samples["cond_images"]  # reference image
         cond_subject = samples["cond_subject"]  # source subject category
@@ -749,23 +749,23 @@ class BlipDiffusion(BaseModel):
         return image
 
     def _noise_latent_step(
-        self,
-        latents,
-        t,
-        text_embeddings,
-        guidance_scale,
-        height,
-        width,
+            self,
+            latents,
+            t,
+            text_embeddings,
+            guidance_scale,
+            height,
+            width,
     ):
         def backward_ddim(x_t, alpha_t, alpha_tm1, eps_xt):
             """from noise to image"""
             return (
-                alpha_tm1**0.5
-                * (
-                    (alpha_t**-0.5 - alpha_tm1**-0.5) * x_t
-                    + ((1 / alpha_tm1 - 1) ** 0.5 - (1 / alpha_t - 1) ** 0.5) * eps_xt
-                )
-                + x_t
+                    alpha_tm1 ** 0.5
+                    * (
+                            (alpha_t ** -0.5 - alpha_tm1 ** -0.5) * x_t
+                            + ((1 / alpha_tm1 - 1) ** 0.5 - (1 / alpha_t - 1) ** 0.5) * eps_xt
+                    )
+                    + x_t
             )
 
         do_classifier_free_guidance = guidance_scale > 1.0
@@ -786,7 +786,7 @@ class BlipDiffusion(BaseModel):
         scheduler = self.ddim_scheduler
 
         prev_timestep = (
-            t - scheduler.config.num_train_timesteps // scheduler.num_inference_steps
+                t - scheduler.config.num_train_timesteps // scheduler.num_inference_steps
         )
         alpha_prod_t = scheduler.alphas_cumprod[t]
         alpha_prod_t_prev = (
@@ -805,15 +805,15 @@ class BlipDiffusion(BaseModel):
         return latents
 
     def _denoise_latent_step(
-        self,
-        latents,
-        t,
-        text_embeddings,
-        guidance_scale,
-        height,
-        width,
-        cond_image=None,
-        use_inversion=False,
+            self,
+            latents,
+            t,
+            text_embeddings,
+            guidance_scale,
+            height,
+            width,
+            cond_image=None,
+            use_inversion=False,
     ):
         if use_inversion:
             noise_placeholder = []
@@ -842,7 +842,7 @@ class BlipDiffusion(BaseModel):
         if do_classifier_free_guidance:
             noise_pred_uncond, noise_pred_text = noise_pred.chunk(2)
             noise_pred = noise_pred_uncond + guidance_scale * (
-                noise_pred_text - noise_pred_uncond
+                    noise_pred_text - noise_pred_uncond
             )
 
         if use_inversion:
