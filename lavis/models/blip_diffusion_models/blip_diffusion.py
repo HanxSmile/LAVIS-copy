@@ -666,7 +666,7 @@ class BlipDiffusion(BaseModel):
 
         prompt_aft = []
         for p in prompt[1:]:
-            p.replace(" ".join(["sks"] * self.num_query_token) + " ", "")
+            p = p.replace(" ".join(["sks"] * self.num_query_token) + " ", "")
             prompt_aft.append(p)
 
         print(prompt_aft)
