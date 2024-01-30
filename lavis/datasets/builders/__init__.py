@@ -90,14 +90,14 @@ from lavis.datasets.builders.retrieval_builder import (
     Flickr30kBuilder,
 )
 
-from lavis.datasets.builders.audio_caption_builder import (
-    AudioSetBuilder,
-    AudioCapsCapBuilder,
-    AudioSetInstructBuilder,
-    AudioCapsInstructCapBuilder,
-    WavCapsCapInstructBuilder,
-    WavCapsCapBuilder
-)
+# from lavis.datasets.builders.audio_caption_builder import (
+#     AudioSetBuilder,
+#     AudioCapsCapBuilder,
+#     AudioSetInstructBuilder,
+#     AudioCapsInstructCapBuilder,
+#     WavCapsCapInstructBuilder,
+#     WavCapsCapBuilder
+# )
 
 from lavis.datasets.builders.object3d_caption_builder import (
     ObjaverseCaptionInstructBuilder,
@@ -108,7 +108,7 @@ from lavis.datasets.builders.object3d_caption_builder import (
 from lavis.datasets.builders.object3d_qa_builder import ObjaverseQABuilder
 from lavis.datasets.builders.object3d_classification_builder import ModelNetClassificationBuilder
 
-from lavis.datasets.builders.audio_qa_builder import AudioCapsQABuilder, ClothoQABuilder
+# from lavis.datasets.builders.audio_qa_builder import AudioCapsQABuilder, ClothoQABuilder
 
 from lavis.datasets.builders.dialogue_builder import (
     AVSDDialBuilder, 
@@ -165,9 +165,9 @@ __all__ = [
     "VizWizVQABuilder",
     "TextCapsCapBuilder",
     "Flickr30kCapBuilder",
-    "AudioSetBuilder",
-    "AudioCapsCapBuilder",
-    "WavCapsCapBuilder",
+    # "AudioSetBuilder",
+    # "AudioCapsCapBuilder",
+    # "WavCapsCapBuilder",
     "WebVid2MCapBuilder",
     "VALORCaptionBuilder",
     "ObjaverseCaptionBuilder",
@@ -179,10 +179,10 @@ __all__ = [
     ## Instruction Builders
     "AOKVQAInstructBuilder",
     "OKVQAInstructBuilder",
-    "AudioSetInstructBuilder",
-    "AudioCapsInstructCapBuilder",
-    "AudioCapsQABuilder",
-    "WavCapsCapInstructBuilder",
+    # "AudioSetInstructBuilder",
+    # "AudioCapsInstructCapBuilder",
+    # "AudioCapsQABuilder",
+    # "WavCapsCapInstructBuilder",
     "ObjaverseCaptionInstructBuilder",
     "ShapenetCaptionInstructBuilder",
     "ModelNetClassificationBuilder",
@@ -218,7 +218,7 @@ __all__ = [
     "ConceptualCaption3MInstructBuilder",
     "VGCaptionInstructBuilder",
     "SBUCaptionInstructBuilder",
-    "ClothoQABuilder",
+    # "ClothoQABuilder",
 
     # DisCRN
     "DiscrnImagePcBuilder",
