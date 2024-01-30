@@ -11,7 +11,7 @@ from lavis.datasets.datasets.nlvr_datasets import NLVRDataset, NLVREvalDataset
 from lavis.datasets.datasets.snli_ve_datasets import SNLIVisualEntialmentDataset, SNLIVisualEntialmentInstructDataset
 from lavis.datasets.datasets.violin_dataset import ViolinVideoEntailmentDataset, ViolinVideoEntailmentInstructDataset
 from lavis.datasets.datasets.vsr_datasets import VSRClassificationDataset, VSRClassificationInstructDataset
-from lavis.datasets.datasets.audio_classification_datasets import ESC50
+# from lavis.datasets.datasets.audio_classification_datasets import ESC50
 @registry.register_builder("violin_entailment")
 class ViolinEntailmentBuilder(BaseDatasetBuilder):
     train_dataset_cls = ViolinVideoEntailmentDataset
@@ -68,8 +68,8 @@ class SNLIVisualEntailmentInstructBuilder(BaseDatasetBuilder):
 
     DATASET_CONFIG_DICT = {"default": "configs/datasets/vsr/defaults_classification_instruct.yaml"}
 
-@registry.register_builder("esc50_cls")
-class ESC50ClassificationBuilder(MultiModalDatasetBuilder):
-    eval_dataset_cls = ESC50
-
-    DATASET_CONFIG_DICT = {"default": "configs/datasets/esc50/defaults_mm_cls.yaml"}
+# @registry.register_builder("esc50_cls")
+# class ESC50ClassificationBuilder(MultiModalDatasetBuilder):
+#     eval_dataset_cls = ESC50
+#
+#     DATASET_CONFIG_DICT = {"default": "configs/datasets/esc50/defaults_mm_cls.yaml"}

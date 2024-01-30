@@ -52,7 +52,7 @@ from lavis.datasets.builders.classification_builder import (
     SNLIVisualEntailmentInstructBuilder,
     ViolinEntailmentInstructBuilder,
     ViolinEntailmentBuilder,
-    ESC50ClassificationBuilder
+    # ESC50ClassificationBuilder
 )
 from lavis.datasets.builders.imagefolder_builder import ImageNetBuilder
 from lavis.datasets.builders.video_qa_builder import (
@@ -174,7 +174,7 @@ __all__ = [
     "ShapenetCaptionBuilder",
     "ObjaverseQABuilder",
     "MusicAVQABuilder",
-    "ESC50ClassificationBuilder",
+    # "ESC50ClassificationBuilder",
 
     ## Instruction Builders
     "AOKVQAInstructBuilder",
